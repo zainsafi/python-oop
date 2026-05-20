@@ -3,63 +3,107 @@
 # that allow us to define how python objects behave with built-in functions
 # and operators.
 # they are called "dunder" because they start and end with double underscores (__).
-# # python automatically calls these methods behind the scenes.
 
+# examples:
+# __init__(), __str__(), __len__(), __eq__()
+# __add__(), __contains__(), __getitem__(), __iter__()
 
-class book:
-    # dunder method 1: __init__ 
-    # triggered automatically a new object or instance of the class is created
-    # used to initialize object attributes.
-    def __init__(self, title, author, pages):
+# Python automatically calls them behind the scenes
+
+# Example:
+# 3 + 4
+# actually runs:
+# 3.__add__(4)
+
+print()
+
+# basic example without special methods
+class bookwithoutmethods:
+
+    def __init__(self, title, pages):
+
         self.title = title
-        self.author = author
         self.pages = pages
 
-    # dunder method 2: __str__ 
-    # triggered automatically when you pass the object to print() or str().
-    # controls what is displayed when print(object) is used.
-    def __str__(self):
-        return f"'{self.title}' by {self.author}"
 
-    # dunder method 3: __len__
-    # triggered automatically when you wrap your object inside len().
-    # allows the object to be used with len().
+book1 = bookwithoutmethods("python mastery", 400)
+book2 = bookwithoutmethods("learn ai", 400)
+
+# print(len(book1))
+# typeerror because python does not know how to get length
+
+print(book1) # default ugly object representation
+
+# false because python compares memory addresses
+print(book1 == book2)
+
+print()
+
+
+# using special methods
+class book:
+
+    # __init__() => initializes object attributes
+    def __init__(self, title, pages):
+
+        self.title = title
+        self.pages = pages
+
+
+    # __len__() => called when len(object) is used
     def __len__(self):
+
         return self.pages
 
-    # dunder method 4: __eq__ 
-    # triggered automatically when you use the '==' operator.
-    # by default, python checks memory addresses. we override it to check
-    # if the actual book details match.
-    # here we compare books based on title and author.
+
+    # __str__() => controls readable string representation
+    def __str__(self):
+
+        return f"'{self.title}' has {self.pages} pages"
+
+
+    # __eq__() => controls equality comparison using ==
     def __eq__(self, other):
-        # we ensure the other object is actually a book before comparing
-        if isinstance(other, book):
-            return self.title == other.title and self.author == other.author
-        return False
+
+        return self.pages == other.pages
 
 
-# using the class (testing dunder methods)
-# creating objects (calls __init__ automatically)
-book_one = book("the hobbit", "j.r.r. tolkien", 310)
-book_two = book("the hobbit", "j.r.r. tolkien", 310)
-book_three = book("1984", "george orwell", 328)
+# creating objects
+book1 = book("built wealth like a boss", 420)
+book2 = book("be your own start", 420)
+book3 = book("python basics", 250)
 
-print("\n--- 1. testing __str__ ---")
-# instead of writing book_one.__str__(), we write print(book_one)
-print(book_one)
-# output: 'the hobbit' by j.r.r. tolkien
 
-print("\n--- 2. testing __len__ ---")
-# instead of writing book_a.__len__(), we use len(book_a)
-print(f"the book is {len(book_one)} pages long.")
-# output: the book is 310 pages long.
+# __len__()
+print(len(book1))
+print(len(book2))
+print(len(book3))
 
-print("\n--- 3. testing __eq__ ---")
-# instead of writing book_a.__eq__(book_b), we use the regular == operator
-print(f"are book_one and book_two equal? {book_one == book_two}")
-# output: true
+print()
 
-print(f"are book_one and book_three equal? {book_one == book_three}")
-# output: false
+# __str__()
+print(book1)
+print(book2)
+print(book3)
+
+print()
+
+# __eq__()
+print(book1 == book2)  # true because pages are same
+print(book1 == book3)  # false
+
+print()
+
+
+# special methods are automatically called
+# these are equivalent
+
+print(len(book1))
+print(book1.__len__())
+
+print()
+
+print(str(book1))
+print(book1.__str__())
+
 
