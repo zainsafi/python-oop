@@ -18,7 +18,5 @@ class Dog:
 dog_1 = Dog('Jack', 3)
 dog_2 = Dog('Thatcher', 5)
 
-print('\n----- DOG OBJECTS -----\n')
-
 dog_1.bark()
 dog_2.bark()
