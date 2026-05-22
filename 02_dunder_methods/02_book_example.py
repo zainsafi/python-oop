@@ -1,4 +1,4 @@
-class book:
+class Book:
     # dunder method 1: __init__ 
     # triggered automatically a new object or instance of the class is created
     # used to initialize object attributes.
@@ -22,20 +22,20 @@ class book:
     # dunder method 4: __eq__ 
     # triggered automatically when you use the '==' operator.
     # by default, python checks memory addresses. we override it to check
-    # if the actual book details match.
+    # if the actual Book details match.
     # here we compare books based on title and author.
     def __eq__(self, other):
-        # we ensure the other object is actually a book before comparing
-        if isinstance(other, book):
+        # we ensure the other object is actually a Book before comparing
+        if isinstance(other, Book):
             return self.title == other.title and self.author == other.author
         return False
 
 
 # using the class (testing dunder methods)
 # creating objects (calls __init__ automatically)
-book_one = book("the hobbit", "j.r.r. tolkien", 310)
-book_two = book("the hobbit", "j.r.r. tolkien", 310)
-book_three = book("1984", "george orwell", 328)
+book_one = Book("the hobbit", "j.r.r. tolkien", 310)
+book_two = Book("the hobbit", "j.r.r. tolkien", 310)
+book_three = Book("1984", "george orwell", 328)
 
 print("\n--- 1. testing __str__ ---")
 # instead of writing book_one.__str__(), we write print(book_one)
@@ -44,8 +44,8 @@ print(book_one)
 
 print("\n--- 2. testing __len__ ---")
 # instead of writing book_a.__len__(), we use len(book_a)
-print(f"the book is {len(book_one)} pages long.")
-# output: the book is 310 pages long.
+print(f"the Book is {len(book_one)} pages long.")
+# output: the Book is 310 pages long.
 
 print("\n--- 3. testing __eq__ ---")
 # instead of writing book_a.__eq__(book_b), we use the regular == operator

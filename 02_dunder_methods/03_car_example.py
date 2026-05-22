@@ -1,6 +1,6 @@
-# custom shopping cart example
+# custom shopping Cart example
 
-class cart:
+class Cart:
 
     def __init__(self):
 
@@ -20,7 +20,7 @@ class cart:
 
         else:
 
-            print(f'{item} is not in cart.')
+            print(f'{item} is not in Cart.')
 
     # special method for len()
     def __len__(self):
@@ -45,65 +45,68 @@ class cart:
     # special method for print()
     def __str__(self):
 
-        return f'cart items -> {self.items}'
+        return f'Cart items -> {self.items}'
 
 
 # creating object
-cart = cart()
+Cart = Cart()
 
 # adding items
-cart.add('laptop')
-cart.add('wireless mouse')
-cart.add('keyboard')
-cart.add('monitor')
+Cart.add('laptop')
+Cart.add('wireless mouse')
+Cart.add('keyboard')
+Cart.add('monitor')
 
 
 # using __iter__
 
 print('\n----- __iter__ method -----\n')
 
-for item in cart:
+for item in Cart:
 
     print(item)
 
 
 # using __len__
 
-print('\n----- cart length -----\n')
+print('\n----- Cart length -----\n')
 
-print(len(cart))
+print(len(Cart))
 
 
 # using __getitem__
 
 print('\n----- indexing -----\n')
 
-print(cart[0])
-print(cart[2])
+print(Cart[0])
+print(Cart[2])
 
 
 # using __contains__
 
 print('\n----- contains method -----\n')
 
-print('monitor' in cart)
-print('phone' in cart)
+print('monitor' in Cart)
+print('phone' in Cart)
 
 
 # using __str__
 
 print('\n----- string representation -----\n')
 
-print(cart)
+print(Cart)
 
 
 # removing items
 
 print('\n----- remove items -----\n')
 
-cart.remove('keyboard')
+Cart.remove('keyboard')
 
-print(cart)
+print(Cart)
 
-cart.remove('phone')
+Cart.remove('phone')
 
+
+
+print(dir(Cart))
