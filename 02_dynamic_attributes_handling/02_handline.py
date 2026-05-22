@@ -50,6 +50,8 @@ for attr in dir(person):
     # skip dunder methods & functions/methods
     if not attr.startswith("__") and not callable(getattr(person, attr)):
         print(f"{attr} -> {getattr(person, attr)}")
+        # In the loop above, callable() is a built-in function that returns True 
+        # if the object passed to it can be called like a function or method
 
 
 
