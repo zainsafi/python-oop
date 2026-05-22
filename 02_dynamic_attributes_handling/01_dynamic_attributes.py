@@ -1,13 +1,3 @@
-# Dynamic object attribute handling means:
-
-# Accessing, creating, updating, or deleting object attributes dynamically at runtime using special built-in functions.
-
-
-
-
-
-
-
 # Dynamic Attributes in Python
 
 # A dynamic attribute is an attribute that is added, modified, or removed
