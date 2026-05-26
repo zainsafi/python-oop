@@ -11,8 +11,8 @@ class Person:
 
     # initializer method automatically runs when object is created
     def __init__(self, name, age):
-        self.name = name
-        self.age = age
+        self.names = name
+        self.ages = age
 
 person = Person("John Doe", 30)
 
@@ -23,15 +23,15 @@ person = Person("John Doe", 30)
 # file, configuration, etc.
 # syntax: getattr(object, attribute_name, default_value)
 
-print("Name ->", getattr(person, "name"))
-print("Age ->", getattr(person, "age"))
+print("Name ->", getattr(person, "names"))
+print("Age ->", getattr(person, "ages"))
 
 # if attribute does not exist, default value is returned
 print("City ->", getattr(person, "city", "Milano"))
 
 
 # dynamic attribute access using variable
-attribute_name = "name"
+attribute_name = "names"
 print("Dynamic access ->", getattr(person, attribute_name))
 attr_name = input('Enter the attribute you want to see: ')
 print(getattr(person, attr_name, 'Attribute not found'))
@@ -78,7 +78,7 @@ print("Has salary? ->", hasattr(person, "salary"))
 
 
 # practical example using hasattr()
-required_attributes = ["name", "age", "email"]
+required_attributes = ["names", "ages", "email"]
 
 for attr in required_attributes:
     if hasattr(person, attr):

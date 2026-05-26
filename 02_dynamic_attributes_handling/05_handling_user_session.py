@@ -21,7 +21,7 @@ print('\nFinal attributes remaining:')
 for attr in dir(session):
     # Ignore dunder methods like __init__ or __str__ and regular methods
     if not attr.startswith('__') and not callable(getattr(session, attr)):
-        print(f' - {attr}: {getattr(session, attr)}')
+        print(f'{attr}: {getattr(session, attr)}')
 
 # Output:
 # Removed attribute: auth_token
